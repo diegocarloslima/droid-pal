@@ -1,3 +1,6 @@
+import com.diegocarloslima.droidpal.build.Config
+import com.diegocarloslima.droidpal.build.Deps
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -5,12 +8,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(Config.compileSdkVersion)
 
     defaultConfig {
         applicationId = "com.diegocarloslima.droidpal"
-        minSdkVersion(19)
-        targetSdkVersion(28)
+        minSdkVersion(Config.minSdkVersion)
+        targetSdkVersion(Config.targetSdkVersion)
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -26,12 +29,14 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${rootProject.extra["kotlin_version"]}")
-    implementation("androidx.appcompat:appcompat:1.0.2")
-    implementation("androidx.core:core-ktx:1.0.2")
-    implementation("com.google.android.material:material:1.0.0")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    testImplementation ("junit:junit:4.12")
-    androidTestImplementation("androidx.test:runner:1.2.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    implementation(Deps.AndroidX.appcompat)
+    implementation(Deps.AndroidX.constraintlayout)
+    implementation(Deps.AndroidX.core)
+    implementation(Deps.GoogleAndroid.material)
+    implementation(Deps.Kotlin.stdlib)
+
+    testImplementation (Deps.junit)
+
+    androidTestImplementation(Deps.AndroidX.testRunner)
+    androidTestImplementation(Deps.AndroidX.testEspresso)
 }
