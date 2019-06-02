@@ -8,12 +8,16 @@ object Deps : BaseDep() {
         val gradle = dep("build:gradle", "3.4.1")
     }
 
-    object AndroidX : BaseDep("androidx", "1.0.2") {
-        val appcompat = dep("appcompat:appcompat")
-        val core = dep("core:core-ktx")
-        val constraintlayout = dep("constraintlayout:constraintlayout", "1.1.3")
+    object AndroidX : BaseDep("androidx") {
+        private val navigationVersion = "2.0.0"
 
-        val testRunner = dep("test:runner")
+        val appcompat = dep("appcompat:appcompat", "1.0.2")
+        val core = dep("core:core-ktx", "1.1.0-beta01")
+        val constraintlayout = dep("constraintlayout:constraintlayout", "2.0.0-beta1")
+        val navigationFragment = dep("navigation:navigation-fragment-ktx", navigationVersion)
+        val navigationUi = dep("navigation:navigation-ui-ktx", navigationVersion)
+
+        val testRunner = dep("test:runner", "1.2.0")
         val testEspresso = dep("test.espresso:espresso-core", "3.2.0")
     }
 

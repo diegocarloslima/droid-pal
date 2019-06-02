@@ -25,13 +25,20 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
     implementation(Deps.AndroidX.appcompat)
     implementation(Deps.AndroidX.constraintlayout)
     implementation(Deps.AndroidX.core)
+    implementation(Deps.AndroidX.navigationFragment)
+    implementation(Deps.AndroidX.navigationUi)
     implementation(Deps.GoogleAndroid.material)
     implementation(Deps.Kotlin.stdlib)
 
