@@ -8,6 +8,20 @@
             android:id="@+id/dashboard_fragment"
             android:name="com.diegocarloslima.droidpal.info.ui.DashboardFragment"
             android:label="@string/dashboard_title"
+            tools:layout="@layout/fragment_dashboard">
+    </fragment>
+
+    <fragment
+        android:id="@+id/device_fragment"
+        android:name="com.diegocarloslima.droidpal.info.ui.DeviceFragment"
+        android:label="@string/device_title"
+        tools:layout="@layout/fragment_base_list">
+    </fragment>
+
+    <fragment
+            android:id="@+id/cpu_fragment"
+            android:name="com.diegocarloslima.droidpal.info.ui.CpuFragment"
+            android:label="@string/cpu_title"
             tools:layout="@layout/fragment_base_list">
     </fragment>
 

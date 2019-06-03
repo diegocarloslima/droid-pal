@@ -1,6 +1,8 @@
 package com.diegocarloslima.droidpal
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         navController = Navigation.findNavController(this, R.id.main_nav_fragment)
-        appBarConfiguration = AppBarConfiguration(navController.graph, binding.mainDrawerLayout)
+        appBarConfiguration = AppBarConfiguration(binding.mainNavView.menu, binding.mainDrawerLayout)
 
         setSupportActionBar(binding.mainAppBar.mainToolbar)
 
@@ -40,6 +42,18 @@ class MainActivity : AppCompatActivity() {
             binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> true
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
