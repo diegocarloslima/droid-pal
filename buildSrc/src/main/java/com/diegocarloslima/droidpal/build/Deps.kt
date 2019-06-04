@@ -12,8 +12,8 @@ object Deps : BaseDep() {
         private val navigationVersion = "2.0.0"
 
         val appcompat = dep("appcompat:appcompat", "1.0.2")
-        val core = dep("core:core-ktx", "1.1.0-beta01")
         val constraintlayout = dep("constraintlayout:constraintlayout", "2.0.0-beta1")
+        val ktx = dep("core:core-ktx", "1.1.0-beta01")
         val navigationFragment = dep("navigation:navigation-fragment-ktx", navigationVersion)
         val navigationUi = dep("navigation:navigation-ui-ktx", navigationVersion)
 
@@ -28,6 +28,14 @@ object Deps : BaseDep() {
     object Kotlin : BaseDep("org.jetbrains.kotlin", "1.3.31") {
         val gradle = dep(name = "kotlin-gradle-plugin")
         val stdlib = dep(name = "kotlin-stdlib-jdk7")
+    }
+
+    object Dagger: BaseDep("com.google.dagger", "2.23") {
+        val dagger = dep(name = "dagger")
+        val android = dep(name = "dagger-android")
+        val androidSupport = dep(name = "dagger-android-support")
+        val compiler = dep(name = "dagger-compiler")
+        val androidProcessor = dep(name = "dagger-android-processor")
     }
 }
 

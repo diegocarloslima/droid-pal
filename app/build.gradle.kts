@@ -5,6 +5,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
+    kotlin("kapt")
 }
 
 android {
@@ -36,11 +37,17 @@ dependencies {
 
     implementation(Deps.AndroidX.appcompat)
     implementation(Deps.AndroidX.constraintlayout)
-    implementation(Deps.AndroidX.core)
+    implementation(Deps.AndroidX.ktx)
     implementation(Deps.AndroidX.navigationFragment)
     implementation(Deps.AndroidX.navigationUi)
     implementation(Deps.GoogleAndroid.material)
     implementation(Deps.Kotlin.stdlib)
+
+    implementation(Deps.Dagger.dagger)
+    implementation(Deps.Dagger.android)
+    implementation(Deps.Dagger.androidSupport)
+    kapt(Deps.Dagger.compiler)
+    kapt(Deps.Dagger.androidProcessor)
 
     testImplementation (Deps.junit)
 
