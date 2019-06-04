@@ -17,6 +17,12 @@
         tools:layout="@layout/fragment_base_list" />
 
     <fragment
+        android:id="@+id/system_fragment"
+        android:name="com.diegocarloslima.droidpal.info.ui.DeviceFragment"
+        android:label="@string/device_title"
+        tools:layout="@layout/fragment_base_list" />
+
+    <fragment
         android:id="@+id/cpu_fragment"
         android:name="com.diegocarloslima.droidpal.info.ui.CpuFragment"
         android:label="@string/cpu_title"

@@ -12,6 +12,10 @@
         android:title="@string/device_title" />
 
     <item
+        android:id="@+id/system_fragment"
+        android:title="@string/system_title" />
+
+    <item
         android:id="@+id/cpu_fragment"
         android:title="@string/cpu_title" />
 

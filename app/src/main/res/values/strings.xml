@@ -10,5 +10,6 @@
 
     <string name="dashboard_title">Dashboard</string>
     <string name="device_title">Device</string>
+    <string name="system_title">System</string>
     <string name="cpu_title">CPU</string>
 </resources>
