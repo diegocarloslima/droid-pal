@@ -2,6 +2,8 @@ package com.diegocarloslima.droidpal.build
 
 object Deps : BaseDep() {
 
+    val timber = "com.jakewharton.timber:timber" version "4.7.1"
+
     val junit = "junit:junit" version "4.12"
 
     object AndroidTools : BaseDep("com.android.tools") {
@@ -9,11 +11,15 @@ object Deps : BaseDep() {
     }
 
     object AndroidX : BaseDep("androidx") {
+        private val lifecycleVersion = "2.1.0-beta01"
         private val navigationVersion = "2.0.0"
 
         val appcompat = dep("appcompat:appcompat", "1.0.2")
         val constraintlayout = dep("constraintlayout:constraintlayout", "2.0.0-beta1")
         val ktx = dep("core:core-ktx", "1.1.0-beta01")
+        val lifecycleExtensions = dep("lifecycle:lifecycle-extensions", lifecycleVersion)
+        val lifecycleReactiveStreams = dep("lifecycle:lifecycle-reactivestreams", lifecycleVersion)
+        val lifecycleCompiler = dep("lifecycle:lifecycle-compiler", lifecycleVersion)
         val navigationFragment = dep("navigation:navigation-fragment-ktx", navigationVersion)
         val navigationUi = dep("navigation:navigation-ui-ktx", navigationVersion)
 

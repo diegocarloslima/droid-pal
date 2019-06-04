@@ -38,6 +38,9 @@ dependencies {
     implementation(Deps.AndroidX.appcompat)
     implementation(Deps.AndroidX.constraintlayout)
     implementation(Deps.AndroidX.ktx)
+    implementation(Deps.AndroidX.lifecycleExtensions)
+    implementation(Deps.AndroidX.lifecycleReactiveStreams)
+    kapt(Deps.AndroidX.lifecycleCompiler)
     implementation(Deps.AndroidX.navigationFragment)
     implementation(Deps.AndroidX.navigationUi)
     implementation(Deps.GoogleAndroid.material)
@@ -48,6 +51,7 @@ dependencies {
     implementation(Deps.Dagger.androidSupport)
     kapt(Deps.Dagger.compiler)
     kapt(Deps.Dagger.androidProcessor)
+    implementation(Deps.timber)
 
     testImplementation (Deps.junit)
 
