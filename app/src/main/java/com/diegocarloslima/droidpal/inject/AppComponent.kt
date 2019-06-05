@@ -15,6 +15,6 @@ import javax.inject.Singleton
 )
 interface AppComponent : AndroidInjector<DroidPalApplication> {
 
-    @Component.Builder
-    abstract class Builder : AndroidInjector.Builder<DroidPalApplication>()
+    @Component.Factory
+    abstract class Factory : AndroidInjector.Factory<DroidPalApplication>
 }
