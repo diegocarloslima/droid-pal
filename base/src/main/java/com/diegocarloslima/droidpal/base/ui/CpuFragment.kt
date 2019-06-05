@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.diegocarloslima.droidpal.R
+import com.diegocarloslima.droidpal.base.R
 
 class CpuFragment : Fragment() {
 

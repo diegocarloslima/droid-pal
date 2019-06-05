@@ -2,7 +2,7 @@ import com.diegocarloslima.droidpal.build.Config
 import com.diegocarloslima.droidpal.build.Deps
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
@@ -12,11 +12,8 @@ android {
     compileSdkVersion(Config.compileSdkVersion)
 
     defaultConfig {
-        applicationId = "com.diegocarloslima.droidpal"
         minSdkVersion(Config.minSdkVersion)
         targetSdkVersion(Config.targetSdkVersion)
-        versionCode = 1
-        versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -39,9 +36,6 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-
-    implementation(project(":base"))
-    implementation(project(":info"))
 
     implementation(Deps.AndroidX.appcompat)
     implementation(Deps.AndroidX.constraintlayout)
