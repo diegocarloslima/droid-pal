@@ -2,6 +2,9 @@ package com.diegocarloslima.droidpal.base.util
 
 import android.os.Build
 
+// TODO: Remove when Build.VERSION_CODES.Q is added
+const val VERSION_CODES_Q = 29
+
 fun supportsApi21() = supportsApiX(Build.VERSION_CODES.LOLLIPOP)
 
 fun supportsApi22() = supportsApiX(Build.VERSION_CODES.LOLLIPOP_MR1)
@@ -18,8 +21,7 @@ fun supportsApi27() = supportsApiX(Build.VERSION_CODES.O_MR1)
 
 fun supportsApi28() = supportsApiX(Build.VERSION_CODES.P)
 
-// TODO: Replace with Build.VERSION_CODES.Q
-fun supportsApi29() = supportsApiX(29)
+fun supportsApi29() = supportsApiX(VERSION_CODES_Q)
 
 @PublishedApi
 internal fun supportsApiX(api: Int) = Build.VERSION.SDK_INT >= api
@@ -37,3 +39,4 @@ inline fun runOnApiOrElse(api: Int, f: () -> Unit, orElse: () -> Unit) {
         orElse()
     }
 }
+
