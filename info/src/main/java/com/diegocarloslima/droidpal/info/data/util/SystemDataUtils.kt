@@ -5,13 +5,7 @@ import com.diegocarloslima.droidpal.base.util.VERSION_CODES_Q
 import java.text.SimpleDateFormat
 import java.util.*
 
-internal val androidApi = Build.VERSION.SDK_INT
-
-internal val apiVersionName = versionNameForApi(androidApi)
-
-internal val apiReleaseDate = releaseDateForApi(androidApi)
-
-private fun versionNameForApi(api: Int) =
+internal fun versionNameForApi(api: Int) =
     when (api) {
         Build.VERSION_CODES.KITKAT -> formatVersionName("Kitkat")
         Build.VERSION_CODES.KITKAT_WATCH -> formatVersionName("Kitkat wearable")
@@ -27,10 +21,8 @@ private fun versionNameForApi(api: Int) =
         else -> Build.VERSION.RELEASE
     }
 
-private fun formatVersionName(name: String) = "$name (${Build.VERSION.RELEASE})"
-
 // From Wikipedia article: https://en.wikipedia.org/wiki/Android_version_history
-private fun releaseDateForApi(api: Int) =
+internal fun releaseDateForApi(api: Int) =
     when (api) {
         Build.VERSION_CODES.KITKAT -> createDate("31-10-2013")
         Build.VERSION_CODES.KITKAT_WATCH -> createDate("25-06-2014")
@@ -44,5 +36,7 @@ private fun releaseDateForApi(api: Int) =
         Build.VERSION_CODES.P -> createDate("06-08-2018")
         else -> null
     }
+
+private fun formatVersionName(name: String) = "$name (${Build.VERSION.RELEASE})"
 
 private fun createDate(str: String) = SimpleDateFormat("dd-MM-YYYY", Locale.US).parse(str)

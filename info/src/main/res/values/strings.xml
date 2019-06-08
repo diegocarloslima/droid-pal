@@ -1,6 +1,50 @@
 <resources>
-    <string name="dashboard_title">Dashboard</string>
-    <string name="device_title">Device</string>
-    <string name="system_title">System</string>
-    <string name="cpu_title">CPU</string>
+    <string name="screen_dashboard">Dashboard</string>
+    <string name="screen_device">Device</string>
+    <string name="screen_system">System</string>
+    <string name="screen_cpu">CPU</string>
+
+    <string name="system_section_android">Android</string>
+    <string name="system_section_build">Build</string>
+    <string name="system_section_system">System</string>
+    <string name="system_section_kernel">Kernel</string>
+    <string name="system_section_security">Security</string>
+    <string name="system_section_lib_support">Library Support</string>
+    <string name="system_section_misc">Misc</string>
+
+    <string name="system_android_released">Released</string>
+    <string name="system_rooted">Root Access</string>
+    <string name="system_api_level">API Level</string>
+    <string name="system_codename">API Level</string>
+    <string name="system_dev_preview">Development Preview</string>
+    <string name="system_rel_build">Release Build</string>
+    <string name="system_android_id">Android ID</string>
+    <string name="system_gsf_id">Services Framework ID</string>
+    <string name="system_play_services_version">Play Services Version</string>
+    <string name="system_advertiser_id">Advertiser ID</string>
+    <string name="system_ad_dnt">Ad Do Not Track</string>
+
+    <string name="system_build_id">ID</string>
+    <string name="system_build_display">Display</string>
+    <string name="system_build_fingerprint">Fingerprint</string>
+    <string name="system_build_incremental">Incremental</string>
+    <string name="system_build_tags">Tags</string>
+    <string name="system_build_time">Time</string>
+
+    <string name="system_bootloader">Bootloader</string>
+    <string name="system_path">Path</string>
+    <string name="system_uptime">Uptime</string>
+
+    <string name="system_kernel_name">Name</string>
+    <string name="system_kernel_version">Version</string>
+    <string name="system_kernel_arch">Architecture</string>
+
+    <string name="system_security_patch_level">Patch Level</string>
+    <string name="system_security_hash_algorithms">Hash Algorithms</string>
+
+    <string name="system_language">Language</string>
+    <string name="system_time_zone">Time Zone</string>
+
+    <string name="value_true_yes">Yes</string>
+    <string name="value_false_no">No</string>
 </resources>
