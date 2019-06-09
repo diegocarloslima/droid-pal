@@ -23,11 +23,14 @@ fun supportsApi28() = supportsApiX(Build.VERSION_CODES.P)
 
 fun supportsApi29() = supportsApiX(VERSION_CODES_Q)
 
-@PublishedApi
-internal fun supportsApiX(api: Int) = Build.VERSION.SDK_INT >= api
-
 inline fun runOnApiAtLeast(api: Int, f: () -> Unit) {
     if (supportsApiX(api)) {
+        f()
+    }
+}
+
+inline fun runOnApiBelow(api: Int, f: () -> Unit) {
+    if (belowApiX(api)) {
         f()
     }
 }
@@ -39,4 +42,10 @@ inline fun runOnApiOrElse(api: Int, f: () -> Unit, orElse: () -> Unit) {
         orElse()
     }
 }
+
+@PublishedApi
+internal fun supportsApiX(api: Int) = Build.VERSION.SDK_INT >= api
+
+@PublishedApi
+internal fun belowApiX(api: Int) = Build.VERSION.SDK_INT < api
 

@@ -63,6 +63,8 @@ dependencies {
 
     testImplementation (Deps.junit)
 
+    implementation(Deps.GoogleAndroidGms.base)
+
     androidTestImplementation(Deps.AndroidX.testRunner)
     androidTestImplementation(Deps.AndroidX.testEspresso)
 }

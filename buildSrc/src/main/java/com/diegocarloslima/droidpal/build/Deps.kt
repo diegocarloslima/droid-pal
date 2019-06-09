@@ -31,12 +31,21 @@ object Deps : BaseDep() {
         val material = dep("material:material", "1.0.0")
     }
 
+    object GoogleAndroidGms : BaseDep("com.google.android.gms") {
+        val adsId = dep(name = "play-services-ads-identifier", version = "16.0.0")
+        val base = dep(name = "play-services-base", version = "16.1.0")
+    }
+
+    object GoogleFirebase : BaseDep("com.google.firebase") {
+        val messaging = dep(name = "")
+    }
+
     object Kotlin : BaseDep("org.jetbrains.kotlin", "1.3.31") {
         val gradle = dep(name = "kotlin-gradle-plugin")
         val stdlib = dep(name = "kotlin-stdlib-jdk7")
     }
 
-    object Dagger: BaseDep("com.google.dagger", "2.23") {
+    object Dagger : BaseDep("com.google.dagger", "2.23") {
         val dagger = dep(name = "dagger")
         val android = dep(name = "dagger-android")
         val androidSupport = dep(name = "dagger-android-support")

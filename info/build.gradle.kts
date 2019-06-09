@@ -48,6 +48,8 @@ dependencies {
     implementation(Deps.AndroidX.navigationFragment)
     implementation(Deps.AndroidX.navigationUi)
     implementation(Deps.GoogleAndroid.material)
+    implementation(Deps.GoogleAndroidGms.adsId)
+    implementation(Deps.GoogleAndroidGms.base)
     implementation(Deps.Kotlin.stdlib)
 
     implementation(Deps.Dagger.dagger)

@@ -45,6 +45,6 @@
     <string name="system_language">Language</string>
     <string name="system_time_zone">Time Zone</string>
 
-    <string name="value_true_yes">Yes</string>
-    <string name="value_false_no">No</string>
+    <string name="value_yes">Yes</string>
+    <string name="value_no">No</string>
 </resources>
