@@ -27,17 +27,24 @@ object Deps : BaseDep() {
         val testEspresso = dep("test.espresso:espresso-core", "3.2.0")
     }
 
-    object GoogleAndroid : BaseDep("com.google.android") {
+    object Android : BaseDep("com.google.android") {
         val material = dep("material:material", "1.0.0")
     }
 
-    object GoogleAndroidGms : BaseDep("com.google.android.gms") {
+    object AndroidPlayServices : BaseDep("com.google.android.gms") {
         val adsId = dep(name = "play-services-ads-identifier", version = "16.0.0")
         val base = dep(name = "play-services-base", version = "16.1.0")
     }
 
-    object GoogleFirebase : BaseDep("com.google.firebase") {
-        val messaging = dep(name = "")
+    object PlayServices : BaseDep("com.google.gms") {
+        // TODO: Version 4.2.0 causes a crash
+        // https://github.com/google/play-services-plugins/issues/22
+        val googleServices = dep(name = "google-services", version = "4.0.2")
+    }
+
+    object Firebase : BaseDep("com.google.firebase") {
+        val core = dep(name = "firebase-core", version = "16.0.9")
+        val messaging = dep(name = "firebase-messaging", version = "18.0.0")
     }
 
     object Kotlin : BaseDep("org.jetbrains.kotlin", "1.3.31") {

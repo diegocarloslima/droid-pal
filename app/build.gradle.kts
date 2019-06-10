@@ -21,6 +21,10 @@ android {
     }
 
     buildTypes {
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+        }
+
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -51,7 +55,7 @@ dependencies {
     kapt(Deps.AndroidX.lifecycleCompiler)
     implementation(Deps.AndroidX.navigationFragment)
     implementation(Deps.AndroidX.navigationUi)
-    implementation(Deps.GoogleAndroid.material)
+    implementation(Deps.Android.material)
     implementation(Deps.Kotlin.stdlib)
 
     implementation(Deps.Dagger.dagger)
@@ -63,8 +67,10 @@ dependencies {
 
     testImplementation (Deps.junit)
 
-    implementation(Deps.GoogleAndroidGms.base)
+    implementation(Deps.AndroidPlayServices.base)
 
     androidTestImplementation(Deps.AndroidX.testRunner)
     androidTestImplementation(Deps.AndroidX.testEspresso)
 }
+
+apply(plugin = "com.google.gms.google-services")
