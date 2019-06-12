@@ -51,7 +51,6 @@ dependencies {
     implementation(Deps.AndroidX.navigationUi)
 
     implementation(Deps.Firebase.core)
-    implementation(Deps.Firebase.messaging)
 
     implementation(Deps.AndroidPlayServices.adsId)
     implementation(Deps.AndroidPlayServices.base)
@@ -64,6 +63,7 @@ dependencies {
     kapt(Deps.Dagger.compiler)
     kapt(Deps.Dagger.androidProcessor)
 
+    implementation(Deps.rootBeer)
     implementation(Deps.timber)
 
     testImplementation (Deps.junit)

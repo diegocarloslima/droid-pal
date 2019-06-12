@@ -2,12 +2,22 @@ package com.diegocarloslima.droidpal.build
 
 object Deps : BaseDep() {
 
+    val rootBeer = "com.scottyab:rootbeer-lib" version "0.0.7"
     val timber = "com.jakewharton.timber:timber" version "4.7.1"
 
     val junit = "junit:junit" version "4.12"
 
+    object Android : BaseDep("com.google.android") {
+        val material = dep("material:material", "1.0.0")
+    }
+
     object AndroidTools : BaseDep("com.android.tools") {
         val gradle = dep("build:gradle", "3.4.1")
+    }
+
+    object AndroidPlayServices : BaseDep("com.google.android.gms") {
+        val adsId = dep(name = "play-services-ads-identifier", version = "16.0.0")
+        val base = dep(name = "play-services-base", version = "16.1.0")
     }
 
     object AndroidX : BaseDep("androidx") {
@@ -27,29 +37,15 @@ object Deps : BaseDep() {
         val testEspresso = dep("test.espresso:espresso-core", "3.2.0")
     }
 
-    object Android : BaseDep("com.google.android") {
-        val material = dep("material:material", "1.0.0")
+    object Coroutines : BaseDep("org.jetbrains.kotlinx", "1.2.1") {
+        val android = dep(name = "kotlinx-coroutines-android")
+        val core = dep(name = "kotlinx-coroutines-core")
+        val rx2 = dep(name = "kotlinx-coroutines-rx2")
     }
 
-    object AndroidPlayServices : BaseDep("com.google.android.gms") {
-        val adsId = dep(name = "play-services-ads-identifier", version = "16.0.0")
-        val base = dep(name = "play-services-base", version = "16.1.0")
-    }
-
-    object PlayServices : BaseDep("com.google.gms") {
-        // TODO: Version 4.2.0 causes a crash
-        // https://github.com/google/play-services-plugins/issues/22
-        val googleServices = dep(name = "google-services", version = "4.0.2")
-    }
-
-    object Firebase : BaseDep("com.google.firebase") {
-        val core = dep(name = "firebase-core", version = "16.0.9")
-        val messaging = dep(name = "firebase-messaging", version = "18.0.0")
-    }
-
-    object Kotlin : BaseDep("org.jetbrains.kotlin", "1.3.31") {
-        val gradle = dep(name = "kotlin-gradle-plugin")
-        val stdlib = dep(name = "kotlin-stdlib-jdk7")
+    object Crashlytics : BaseDep("com.crashlytics.sdk.android") {
+        val crashlytics = dep(name = "crashlytics", version = "2.10.1")
+        val gradle = "io.fabric.tools:gradle" version "1.29.0"
     }
 
     object Dagger : BaseDep("com.google.dagger", "2.23") {
@@ -58,6 +54,27 @@ object Deps : BaseDep() {
         val androidSupport = dep(name = "dagger-android-support")
         val compiler = dep(name = "dagger-compiler")
         val androidProcessor = dep(name = "dagger-android-processor")
+    }
+
+    object Firebase : BaseDep("com.google.firebase") {
+        val core = dep(name = "firebase-core", version = "16.0.9")
+    }
+
+    object PlayServices : BaseDep("com.google.gms") {
+        // TODO: Version 4.2.0 causes a crash
+        // https://github.com/google/play-services-plugins/issues/22
+        val googleServices = dep(name = "google-services", version = "4.0.2")
+    }
+
+    object Kotlin : BaseDep("org.jetbrains.kotlin", "1.3.31") {
+        val gradle = dep(name = "kotlin-gradle-plugin")
+        val stdlib = dep(name = "kotlin-stdlib-jdk7")
+    }
+
+    object ReactiveX : BaseDep("io.reactivex.rxjava2") {
+        val android = dep(name = "rxandroid", version = "2.1.1")
+        val java = dep(name = "rxjava", version = "2.2.9")
+        val kotlin = dep(name = "rxkotlin", version = "2.3.0")
     }
 }
 

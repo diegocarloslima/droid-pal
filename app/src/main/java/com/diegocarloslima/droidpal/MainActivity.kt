@@ -13,7 +13,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.diegocarloslima.droidpal.databinding.ActivityMainBinding
-import com.google.android.gms.common.GoogleApiAvailability
 
 class MainActivity : AppCompatActivity() {
 

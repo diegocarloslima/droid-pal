@@ -5,6 +5,8 @@
 
     <!--<dist:module dist:instant="true" />-->
 
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
     <application
         android:name=".DroidPalApplication"
         android:allowBackup="true"

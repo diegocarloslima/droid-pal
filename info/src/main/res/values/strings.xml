@@ -1,9 +1,4 @@
 <resources>
-    <string name="screen_dashboard">Dashboard</string>
-    <string name="screen_device">Device</string>
-    <string name="screen_system">System</string>
-    <string name="screen_cpu">CPU</string>
-
     <string name="system_section_android">Android</string>
     <string name="system_section_build">Build</string>
     <string name="system_section_system">System</string>

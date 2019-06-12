@@ -6,6 +6,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("io.fabric")
 }
 
 android {
@@ -44,8 +45,9 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(project(":base"))
     implementation(project(":info"))
+
+    implementation(Deps.Android.material)
 
     implementation(Deps.AndroidX.appcompat)
     implementation(Deps.AndroidX.constraintlayout)
@@ -55,7 +57,13 @@ dependencies {
     kapt(Deps.AndroidX.lifecycleCompiler)
     implementation(Deps.AndroidX.navigationFragment)
     implementation(Deps.AndroidX.navigationUi)
-    implementation(Deps.Android.material)
+
+    implementation(Deps.Crashlytics.crashlytics)
+    implementation(Deps.Firebase.core)
+
+    implementation(Deps.AndroidPlayServices.adsId)
+    implementation(Deps.AndroidPlayServices.base)
+
     implementation(Deps.Kotlin.stdlib)
 
     implementation(Deps.Dagger.dagger)
@@ -63,11 +71,10 @@ dependencies {
     implementation(Deps.Dagger.androidSupport)
     kapt(Deps.Dagger.compiler)
     kapt(Deps.Dagger.androidProcessor)
+
     implementation(Deps.timber)
 
     testImplementation (Deps.junit)
-
-    implementation(Deps.AndroidPlayServices.base)
 
     androidTestImplementation(Deps.AndroidX.testRunner)
     androidTestImplementation(Deps.AndroidX.testEspresso)

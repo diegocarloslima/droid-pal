@@ -8,8 +8,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="dashboard_title">Dashboard</string>
-    <string name="device_title">Device</string>
-    <string name="system_title">System</string>
-    <string name="cpu_title">CPU</string>
+    <string name="screen_dashboard">Dashboard</string>
+    <string name="screen_device">Device</string>
+    <string name="screen_system">System</string>
+    <string name="screen_cpu">CPU</string>
 </resources>
