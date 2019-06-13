@@ -17,6 +17,8 @@ import com.diegocarloslima.droidpal.info.data.util.versionNameForApi
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import com.google.android.gms.common.GoogleApiAvailability
 import com.scottyab.rootbeer.RootBeer
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class SystemLocalDataSource @Inject constructor(context: Context) {
@@ -24,6 +26,8 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
     val androidMainInfo: AndroidMainInfo = loadAndroidMainInfo(context)
 
     val androidItems: List<InfoItem> = loadAndroidItems(context)
+
+    val buildItems: List<InfoItem> = loadBuildItems(context)
 
     private fun loadAndroidMainInfo(context: Context): AndroidMainInfo {
         val api = Build.VERSION.SDK_INT
@@ -68,6 +72,25 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
 
         val adDnt = if (advertisingId.isLimitAdTrackingEnabled) R.string.value_yes else R.string.value_no
         items.addInfoItem(context, R.string.system_ad_dnt, adDnt)
+
+        return items
+    }
+
+    private fun loadBuildItems(context: Context): List<InfoItem> {
+        val items = mutableListOf<InfoItem>()
+
+        items.addInfoItem(context, R.string.system_build_id, Build.ID)
+
+        items.addInfoItem(context, R.string.system_build_display, Build.DISPLAY)
+
+        items.addInfoItem(context, R.string.system_build_fingerprint, Build.FINGERPRINT)
+
+        items.addInfoItem(context, R.string.system_build_tags, Build.TAGS)
+
+        items.addInfoItem(context, R.string.system_build_incremental, Build.VERSION.INCREMENTAL)
+
+        val dateFormat = SimpleDateFormat("MMMM dd, yyyy hh:mm:ss aa", Locale.getDefault())
+        items.addInfoItem(context, R.string.system_build_time, dateFormat.format(Date(Build.TIME)))
 
         return items
     }
