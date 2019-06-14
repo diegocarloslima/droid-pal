@@ -10,8 +10,8 @@
     <string name="system_android_released">Released</string>
     <string name="system_rooted">Root Access</string>
     <string name="system_api_level">API Level</string>
-    <string name="system_codename">API Level</string>
     <string name="system_dev_preview">Development Preview</string>
+    <string name="system_codename">Codename</string>
     <string name="system_rel_build">Release Build</string>
     <string name="system_android_id">Android ID</string>
     <string name="system_gsf_id">Services Framework ID</string>
@@ -22,11 +22,12 @@
     <string name="system_build_id">ID</string>
     <string name="system_build_display">Display</string>
     <string name="system_build_fingerprint">Fingerprint</string>
-    <string name="system_build_incremental">Incremental</string>
     <string name="system_build_tags">Tags</string>
+    <string name="system_build_incremental">Incremental</string>
     <string name="system_build_time">Time</string>
 
     <string name="system_bootloader">Bootloader</string>
+    <string name="system_vm_runtime">VM Runtime</string>
     <string name="system_path">Path</string>
     <string name="system_uptime">Uptime</string>
 

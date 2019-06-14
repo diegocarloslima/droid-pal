@@ -16,8 +16,10 @@ internal fun MutableList<InfoItem>.addInfoItem(context: Context, @StringRes strR
     this.addIfValid(InfoItem(context.getString(strResId), context.getString(value)))
 }
 
+internal fun String.isValidValue() = this.isNotBlank() && !this.equals("UNKNOWN", true)
+
 private fun MutableList<InfoItem>.addIfValid(item: InfoItem) {
-    if(item.title.isNotBlank() && item.value.isNotBlank()) {
+    if (item.title.isNotBlank() && item.value.isNotBlank() && item.value.isValidValue()) {
         this.add(item)
     }
 }

@@ -14,6 +14,7 @@ import com.diegocarloslima.droidpal.info.data.model.InfoItem
 import com.diegocarloslima.droidpal.info.data.util.addInfoItem
 import com.diegocarloslima.droidpal.info.data.util.releaseDateForApi
 import com.diegocarloslima.droidpal.info.data.util.versionNameForApi
+import com.diegocarloslima.droidpal.info.data.util.vmDescForVersion
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import com.google.android.gms.common.GoogleApiAvailability
 import com.scottyab.rootbeer.RootBeer
@@ -95,6 +96,20 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
         return items
     }
 
+    private fun loadSystemItems(context: Context): List<InfoItem> {
+        val items = mutableListOf<InfoItem>()
+
+        items.addInfoItem(context, R.string.system_bootloader, Build.BOOTLOADER)
+
+        items.addInfoItem(context, R.string.system_vm_runtime, vmRuntime())
+
+        items.addInfoItem(context, R.string.system_path, System.getenv("PATH")?:"")
+
+        // TODO: System uptime
+
+        return items
+    }
+
     @SuppressLint("HardwareIds")
     private fun androidId(context: Context) =
         Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
@@ -112,4 +127,6 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
         }
         return ""
     }
+
+    private fun vmRuntime() =  vmDescForVersion(System.getProperty("java.vm.version")?:"")
 }

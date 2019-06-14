@@ -37,6 +37,13 @@ internal fun releaseDateForApi(api: Int) =
         else -> null
     }
 
+internal fun vmDescForVersion(version: String): String {
+    if (!version.isValidValue()) return version
+    val major = if (version.contains('.')) version.substring(0, version.indexOf('.')) else version
+    val vm = if (major.equals("0") || major.equals("1")) "Dalvik" else "ART"
+    return "$vm $version"
+}
+
 private fun formatVersionName(name: String) = "$name (${Build.VERSION.RELEASE})"
 
 private fun createDate(str: String) = SimpleDateFormat("dd-MM-YYYY", Locale.US).parse(str)
