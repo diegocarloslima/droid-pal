@@ -8,7 +8,7 @@ import java.util.*
 internal fun versionNameForApi(api: Int) =
     when (api) {
         Build.VERSION_CODES.KITKAT -> formatVersionName("Kitkat")
-        Build.VERSION_CODES.KITKAT_WATCH -> formatVersionName("Kitkat wearable")
+        Build.VERSION_CODES.KITKAT_WATCH -> formatVersionName("Kitkat Wearable")
         Build.VERSION_CODES.LOLLIPOP -> formatVersionName("Lollipop")
         Build.VERSION_CODES.LOLLIPOP_MR1 -> formatVersionName("Lollipop MR1")
         Build.VERSION_CODES.M -> formatVersionName("Marshmallow")
@@ -40,7 +40,7 @@ internal fun releaseDateForApi(api: Int) =
 internal fun vmDescForVersion(version: String): String {
     if (!version.isValidValue()) return version
     val major = if (version.contains('.')) version.substring(0, version.indexOf('.')) else version
-    val vm = if (major.equals("0") || major.equals("1")) "Dalvik" else "ART"
+    val vm = if (major == "0" || major == "1") "Dalvik" else "ART"
     return "$vm $version"
 }
 

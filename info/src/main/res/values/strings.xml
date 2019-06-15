@@ -43,4 +43,10 @@
 
     <string name="value_yes">Yes</string>
     <string name="value_no">No</string>
+
+    <plurals name="value_unit_day">
+        <item quantity="one">day</item>
+        <item quantity="other">days</item>
+    </plurals>
+
 </resources>
