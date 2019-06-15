@@ -35,6 +35,8 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
 
     val buildItems: List<InfoItem> = loadBuildItems(context)
 
+    val kernelItems: List<InfoItem> = loadKernelItems(context)
+
     private fun loadAndroidMainInfo(context: Context): AndroidMainInfo {
         val api = Build.VERSION.SDK_INT
         val versionName = versionNameForApi(api)
@@ -105,6 +107,18 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
         return items
     }
 
+    private fun loadKernelItems(context: Context): List<InfoItem> {
+        val items = mutableListOf<InfoItem>()
+
+        items.addInfoItem(context, R.string.system_kernel_name, System.getProperty("os.name") ?: "")
+
+        items.addInfoItem(context, R.string.system_kernel_version, System.getProperty("os.version") ?: "")
+
+        items.addInfoItem(context, R.string.system_kernel_arch, System.getProperty("os.arch") ?: "")
+
+        return items
+    }
+
     @TargetApi(Build.VERSION_CODES.M)
     private fun devPreview() = Build.VERSION.PREVIEW_SDK_INT.yesStrResIf(0)
 
@@ -152,7 +166,7 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
         val minuteCount = remainder / aMinuteInSeconds
         remainder %= aMinuteInSeconds
         val day = StringBuilder()
-        if(dayCount > 0) {
+        if (dayCount > 0) {
             day.append(context.resources.getQuantityString(R.plurals.value_unit_day, dayCount.toInt()))
             day.append(", ")
         }
