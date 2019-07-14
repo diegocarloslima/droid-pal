@@ -44,6 +44,8 @@ internal fun vmDescForVersion(version: String): String {
     return "$vm $version"
 }
 
+
+
 private fun formatVersionName(name: String) = "$name (${Build.VERSION.RELEASE})"
 
 private fun createDate(str: String) = SimpleDateFormat("dd-MM-YYYY", Locale.US).parse(str)

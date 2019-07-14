@@ -2,42 +2,61 @@ package com.diegocarloslima.droidpal.info.data.repository
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
+import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.SystemClock
 import android.provider.Settings
+import androidx.lifecycle.MutableLiveData
 import com.diegocarloslima.droidpal.base.util.runOnApiAtLeast
 import com.diegocarloslima.droidpal.base.util.runOnApiBelow
 import com.diegocarloslima.droidpal.info.R
 import com.diegocarloslima.droidpal.info.data.model.AndroidMainInfo
 import com.diegocarloslima.droidpal.info.data.model.InfoItem
 import com.diegocarloslima.droidpal.info.data.util.*
-import com.diegocarloslima.droidpal.info.data.util.addInfoItem
-import com.diegocarloslima.droidpal.info.data.util.releaseDateForApi
-import com.diegocarloslima.droidpal.info.data.util.versionNameForApi
-import com.diegocarloslima.droidpal.info.data.util.vmDescForVersion
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import com.google.android.gms.common.GoogleApiAvailability
 import com.scottyab.rootbeer.RootBeer
-import java.lang.StringBuilder
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class SystemLocalDataSource @Inject constructor(context: Context) {
+class SystemLocalDataSource @Inject constructor(private val context: Application) {
 
-    val androidMainInfo: AndroidMainInfo = loadAndroidMainInfo(context)
+    val androidMainInfo: MutableLiveData<AndroidMainInfo> = MutableLiveData()
 
-    val androidItems: List<InfoItem> = loadAndroidItems(context)
+    val androidItems: MutableLiveData<List<InfoItem>> = MutableLiveData()
 
-    val buildItems: List<InfoItem> = loadBuildItems(context)
+    val buildItems: MutableLiveData<List<InfoItem>> = MutableLiveData()
 
-    val kernelItems: List<InfoItem> = loadKernelItems(context)
+    val systemItems: MutableLiveData<List<InfoItem>> = MutableLiveData()
 
-    private fun loadAndroidMainInfo(context: Context): AndroidMainInfo {
+    val kernelItems: MutableLiveData<List<InfoItem>> = MutableLiveData()
+
+    init {
+        loadAll()
+    }
+
+    private fun loadAll() {
+        val job = Job()
+        val scope = CoroutineScope(Dispatchers.IO + job)
+        scope.launch {
+            androidMainInfo.postValue(loadAndroidMainInfo())
+            androidItems.postValue(loadAndroidItems())
+            buildItems.postValue(loadBuildItems())
+            systemItems.postValue(loadSystemItems())
+            kernelItems.postValue(loadKernelItems())
+        }
+    }
+
+    private fun loadAndroidMainInfo(): AndroidMainInfo {
         val api = Build.VERSION.SDK_INT
         val versionName = versionNameForApi(api)
         val releaseDate = releaseDateForApi(api)
@@ -45,7 +64,7 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
         return AndroidMainInfo(api, versionName, releaseDate, rooted)
     }
 
-    private fun loadAndroidItems(context: Context): List<InfoItem> {
+    private fun loadAndroidItems(): List<InfoItem> {
         val items = mutableListOf<InfoItem>()
 
         items.addInfoItem(context, R.string.system_api_level, Build.VERSION.SDK_INT.toString())
@@ -66,16 +85,16 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
 
         items.addInfoItem(context, R.string.system_play_services_version, playServicesVersion(context))
 
-        // TODO: needs to be called in bg thread
         val advertisingId = AdvertisingIdClient.getAdvertisingIdInfo(context)
         items.addInfoItem(context, R.string.system_advertiser_id, advertisingId.id)
 
-        items.addInfoItem(context, R.string.system_ad_dnt, advertisingId.isLimitAdTrackingEnabled.yesStrResIf(true))
+        items.addInfoItem(context,
+            R.string.system_ad_dnt, advertisingId.isLimitAdTrackingEnabled.yesStrResIf(true))
 
         return items
     }
 
-    private fun loadBuildItems(context: Context): List<InfoItem> {
+    private fun loadBuildItems(): List<InfoItem> {
         val items = mutableListOf<InfoItem>()
 
         items.addInfoItem(context, R.string.system_build_id, Build.ID)
@@ -88,12 +107,12 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
 
         items.addInfoItem(context, R.string.system_build_incremental, Build.VERSION.INCREMENTAL)
 
-        items.addInfoItem(context, R.string.system_build_time, buildTime())
+        items.addInfoItem(context, R.string.system_build_time, buildTime(context))
 
         return items
     }
 
-    private fun loadSystemItems(context: Context): List<InfoItem> {
+    private fun loadSystemItems(): List<InfoItem> {
         val items = mutableListOf<InfoItem>()
 
         items.addInfoItem(context, R.string.system_bootloader, Build.BOOTLOADER)
@@ -107,7 +126,7 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
         return items
     }
 
-    private fun loadKernelItems(context: Context): List<InfoItem> {
+    private fun loadKernelItems(): List<InfoItem> {
         val items = mutableListOf<InfoItem>()
 
         items.addInfoItem(context, R.string.system_kernel_name, System.getProperty("os.name") ?: "")
@@ -147,8 +166,8 @@ class SystemLocalDataSource @Inject constructor(context: Context) {
             ""
         }
 
-    private fun buildTime(): String {
-        val dateFormat = SimpleDateFormat("MMMM dd, yyyy hh:mm:ss aa", Locale.getDefault())
+    private fun buildTime(context: Context): String {
+        val dateFormat = SimpleDateFormat("MMMM dd, yyyy hh:mm:ss aa", context.currentLocale)
         return dateFormat.format(Date(Build.TIME))
     }
 

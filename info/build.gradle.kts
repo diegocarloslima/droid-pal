@@ -57,6 +57,9 @@ dependencies {
 
     implementation(Deps.Kotlin.stdlib)
 
+    implementation(Deps.Coroutines.core)
+    implementation(Deps.Coroutines.android)
+
     implementation(Deps.Dagger.dagger)
     implementation(Deps.Dagger.android)
     implementation(Deps.Dagger.androidSupport)

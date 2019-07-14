@@ -2,8 +2,15 @@ package com.diegocarloslima.droidpal.info.data.util
 
 import android.content.Context
 import androidx.annotation.StringRes
+import com.diegocarloslima.droidpal.base.util.supportsApi21
+import com.diegocarloslima.droidpal.base.util.supportsApi24
 import com.diegocarloslima.droidpal.info.R
 import com.diegocarloslima.droidpal.info.data.model.InfoItem
+
+internal val Context.currentLocale
+    get() = if (supportsApi24()) resources.configuration.locales[0]
+    else resources.configuration.locale
+
 
 internal fun Any.yesStrResIf(expectedValue: Any) = if (this == expectedValue) R.string.value_yes else R.string.value_no
 

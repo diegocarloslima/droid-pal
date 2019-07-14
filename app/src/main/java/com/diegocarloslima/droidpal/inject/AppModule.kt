@@ -1,6 +1,6 @@
 package com.diegocarloslima.droidpal.inject
 
-import android.content.Context
+import android.app.Application
 import com.diegocarloslima.droidpal.DroidPalApplication
 import dagger.Module
 import dagger.Provides
@@ -9,5 +9,5 @@ import dagger.Provides
 class AppModule {
 
     @Provides
-    fun provideContext(application: DroidPalApplication): Context = application.applicationContext
+    fun provideApplication(application: DroidPalApplication): Application = application
 }
