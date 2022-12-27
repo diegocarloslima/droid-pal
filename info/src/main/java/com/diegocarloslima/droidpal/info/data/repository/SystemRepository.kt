@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SystemRepository @Inject constructor(localDataSource: SystemLocalDataSource) {
+internal class SystemRepository @Inject constructor(localDataSource: SystemLocalDataSource) {
 
     val androidMainInfo: LiveData<AndroidMainInfo> = localDataSource.androidMainInfo
 

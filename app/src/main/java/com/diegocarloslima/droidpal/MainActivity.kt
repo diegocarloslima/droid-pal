@@ -1,5 +1,7 @@
 package com.diegocarloslima.droidpal
 
+import dagger.android.AndroidInjection
+
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        AndroidInjection.inject(this)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         navController = Navigation.findNavController(this, R.id.main_nav_fragment)

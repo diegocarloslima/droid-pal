@@ -6,25 +6,25 @@
 
     <fragment
         android:id="@+id/dashboard_fragment"
-        android:name="com.diegocarloslima.droidpal.info.ui.DashboardFragment"
+        android:name="com.diegocarloslima.droidpal.info.ui.fragment.DashboardFragment"
         android:label="@string/screen_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/device_fragment"
-        android:name="com.diegocarloslima.droidpal.info.ui.DeviceFragment"
+        android:name="com.diegocarloslima.droidpal.info.ui.fragment.DeviceFragment"
         android:label="@string/screen_device"
         tools:layout="@layout/fragment_base_list" />
 
     <fragment
         android:id="@+id/system_fragment"
-        android:name="com.diegocarloslima.droidpal.info.ui.DeviceFragment"
-        android:label="@string/screen_device"
+        android:name="com.diegocarloslima.droidpal.info.ui.fragment.SystemFragment"
+        android:label="@string/screen_system"
         tools:layout="@layout/fragment_base_list" />
 
     <fragment
         android:id="@+id/cpu_fragment"
-        android:name="com.diegocarloslima.droidpal.info.ui.CpuFragment"
+        android:name="com.diegocarloslima.droidpal.info.ui.fragment.CpuFragment"
         android:label="@string/screen_cpu"
         tools:layout="@layout/fragment_base_list" />
 

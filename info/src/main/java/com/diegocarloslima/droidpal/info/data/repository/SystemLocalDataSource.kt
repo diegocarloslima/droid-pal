@@ -28,7 +28,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class SystemLocalDataSource @Inject constructor(private val context: Application) {
+internal class SystemLocalDataSource @Inject constructor(private val context: Application) {
 
     val androidMainInfo: MutableLiveData<AndroidMainInfo> = MutableLiveData()
 
